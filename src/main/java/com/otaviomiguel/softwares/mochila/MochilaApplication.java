@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Set;
 
 @SpringBootApplication
@@ -23,8 +25,10 @@ public class MochilaApplication {
   public static void main(String[] args) throws IOException {
     SpringApplication.run(MochilaApplication.class, args);
 
+    final File file = new File("src/main/resources/valores.csv");
+
     final CsvReader csvReader;
-    csvReader = new CsvReader("C:\\Projetos\\mochila\\src\\main\\resources\\valores.csv");
+    csvReader = new CsvReader(file.getAbsolutePath());
     final int[] itens = csvReader.read();
 
     int[] resultado = algoritmos.stream()
@@ -33,7 +37,7 @@ public class MochilaApplication {
       .orElseThrow()
       .executar(itens);
 
-    System.out.println(resultado.toString());
+    System.out.println(Arrays.toString(resultado));
   }
 
 }

@@ -12,7 +12,8 @@ public class AlgoritmoGenericoConfigs {
   public static final MochilaAlgoritmosEnum TIPO_ALGORITMO = MochilaAlgoritmosEnum.ALGORITMO_GENETICO;
 
   public static final boolean USAR_POPULACAO_FIXA = true;
-  public static final int TAMANHO_POPULACAO = 3;
+  public static final int TAMANHO_POPULACAO = 10;
+  public static final int TAMANHO_MOCHILA = 30;
   public static final double PROPORCAO_POPULACAO = 0.1;
   public static final double PROBABILIDADE_CROSSOVER = 0.3;
   public static final double PROBABILIDADE_MUTACAO = 0.003;
