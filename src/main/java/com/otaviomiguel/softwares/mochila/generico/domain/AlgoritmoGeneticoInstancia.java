@@ -3,7 +3,7 @@ package com.otaviomiguel.softwares.mochila.generico.domain;
 public class AlgoritmoGeneticoInstancia {
 
     private boolean[] instancia;
-    private double fit;
+    private int fit;
 
     public AlgoritmoGeneticoInstancia(final boolean[] instancia) {
         this.instancia = instancia;
@@ -17,11 +17,11 @@ public class AlgoritmoGeneticoInstancia {
         this.instancia = instancia;
     }
 
-    public double getFit() {
+    public int getFit() {
         return fit;
     }
 
-    public void setFit(final double fit) {
+    public void setFit(final int fit) {
         this.fit = fit;
     }
 }

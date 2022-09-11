@@ -3,8 +3,6 @@ package com.otaviomiguel.softwares.mochila;
 import com.otaviomiguel.softwares.mochila.core.config.MochilaCoreConfigs;
 import com.otaviomiguel.softwares.mochila.core.gateway.CsvReader;
 import com.otaviomiguel.softwares.mochila.core.usecase.Algoritmo;
-import com.otaviomiguel.softwares.mochila.generico.usecase.AlgoritmoGenetico;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
