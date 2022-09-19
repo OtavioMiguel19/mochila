@@ -9,6 +9,11 @@ import com.otaviomiguel.softwares.mochila.core.domain.MochilaAlgoritmosEnum;
  */
 public class MochilaCoreConfigs {
 
-  public static final MochilaAlgoritmosEnum ALGORITMO = MochilaAlgoritmosEnum.ALGORITMO_GENETICO;
+  public static final MochilaAlgoritmosEnum ALGORITMO = MochilaAlgoritmosEnum.BUSCA_EM_FEIXE;
+
+  public static final int TAMANHO_MOCHILA = 1000;
+
+  public static final int FIT_ESPERADO = 1;
+
 
 }

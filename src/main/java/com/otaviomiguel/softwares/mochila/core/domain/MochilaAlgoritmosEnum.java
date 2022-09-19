@@ -8,5 +8,5 @@ package com.otaviomiguel.softwares.mochila.core.domain;
 public enum MochilaAlgoritmosEnum {
   NONE,
   ALGORITMO_GENETICO,
-  BUSCA_EM_FEIXO
+  BUSCA_EM_FEIXE
 }

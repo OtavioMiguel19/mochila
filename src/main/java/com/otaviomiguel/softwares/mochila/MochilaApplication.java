@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Set;
 
 @SpringBootApplication
@@ -29,6 +30,7 @@ public class MochilaApplication {
     csvReader = new CsvReader(file.getAbsolutePath());
     final int[] itens = csvReader.read();
 
+
     int[] resultado = algoritmos.stream()
       .filter(algoritmo -> algoritmo.get().equals(MochilaCoreConfigs.ALGORITMO))
       .findFirst()
@@ -36,6 +38,8 @@ public class MochilaApplication {
       .executar(itens);
 
     System.out.println(Arrays.toString(resultado));
+
+
   }
 
 }
