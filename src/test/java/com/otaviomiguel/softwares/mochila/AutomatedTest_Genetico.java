@@ -22,6 +22,7 @@ class AutomatedTest_Genetico {
 
   private int[] itens = new int[0];
   File csvOutputFile = new File("AutomatedTest_Genetico_Result.csv");
+  File csvOutputFileSingle = new File("AutomatedTest_Genetico_Result_Single.csv");
 
   @InjectMocks
   private AlgoritmoGenetico algoritmoGenetico;
@@ -66,14 +67,17 @@ class AutomatedTest_Genetico {
 
   @Test
   void testSingle() {
-    final String header =
-      "Tempo de execucao | Iteracoes | Tamanho da entrada | Tamanho Populacao original | Tamanho Populacao no fim | "
-        + "Melhor fit | Tamanho da mochila | Quantidade de sorteados para crossover | Quantidade de crossovers | "
-        + "Quantidade de mutacoes";
-    System.out.println(header);
-    algoritmoGenetico.initAutomatedTest(10000000, 100, 1,
-      1000, true, 100, 0.0, 0.3,
-      0.005, null);
+    try {
+      FileWriter pw = new FileWriter(csvOutputFile.getAbsolutePath(), false);
+      pw.append("\n");
+      pw.flush();
+      pw.close();
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+    algoritmoGenetico.initAutomatedSingleTest(10000000, 100, 1,
+      1000, false, 100, 0.1, 0.3,
+      0.005, csvOutputFileSingle);
     algoritmoGenetico.executar(itens);
   }
 }

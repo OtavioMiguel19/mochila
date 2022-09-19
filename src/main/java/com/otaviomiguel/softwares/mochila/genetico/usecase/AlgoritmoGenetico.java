@@ -47,6 +47,7 @@ public class AlgoritmoGenetico implements Algoritmo {
   private static double PROBABILIDADE_CROSSOVER;
   private static double PROBABILIDADE_MUTACAO;
   private static File csvTestResultFile;
+  private static File csvSingleTestResultFile;
 
 
   public void initUsual() {
@@ -84,6 +85,25 @@ public class AlgoritmoGenetico implements Algoritmo {
     showHeader = false;
   }
 
+  public void initAutomatedSingleTest(int quantidadeMaximaExecucoes, int quantidadeSorteiosCrossover, int fitEsperado,
+    int tamanhoMochila, boolean usarPopulacaoFixa, int tamanhoPopulacao, double proporcaoPopulacao,
+    double probabilidadeCrossOver, double probabilidadeMutacao, File csvSingleTestResultFile) {
+    QUANTIDADE_MAXIMA_EXECUCOES = quantidadeMaximaExecucoes;
+    QUANTIDADE_SORTEIOS_CROSSOVER = quantidadeSorteiosCrossover;
+    FIT_ESPERADO = fitEsperado;
+    TAMANHO_MOCHILA = tamanhoMochila;
+    USAR_POPULACAO_FIXA = usarPopulacaoFixa;
+    TAMANHO_POPULACAO = tamanhoPopulacao;
+    PROPORCAO_POPULACAO = proporcaoPopulacao;
+    PROBABILIDADE_CROSSOVER = probabilidadeCrossOver;
+    PROBABILIDADE_MUTACAO = probabilidadeMutacao;
+
+    this.csvSingleTestResultFile = csvSingleTestResultFile;
+
+    initied = true;
+    showHeader = false;
+  }
+
   @Override
   public int[] executar(final int[] valores) {
 
@@ -109,6 +129,17 @@ public class AlgoritmoGenetico implements Algoritmo {
       ordenarPorFit();
       melhorValor = populacao.get(0);
 
+      if (Objects.nonNull(csvSingleTestResultFile)) {
+        try {
+          FileWriter pw = new FileWriter(csvSingleTestResultFile.getAbsolutePath(), true);
+          pw.append(String.valueOf(melhorValor.getFit()));
+          pw.append("\n");
+          pw.flush();
+          pw.close();
+        } catch (IOException e) {
+          throw new RuntimeException(e);
+        }
+      }
       //      System.out.println(
       //        "Algoritmo Genetico - Execucao numero " + i + " - Melhor fit por enquanto: " + melhorValor.getFit());
 
@@ -167,8 +198,6 @@ public class AlgoritmoGenetico implements Algoritmo {
         pw.append("\n");
         pw.flush();
         pw.close();
-      } catch (FileNotFoundException e) {
-        throw new RuntimeException(e);
       } catch (IOException e) {
         throw new RuntimeException(e);
       }
